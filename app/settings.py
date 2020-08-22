@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Third party
-    'simple_email_confirmation',
     'graphene_django',
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
     'corsheaders',
