@@ -1,0 +1,47 @@
+version: "3"
+services:
+  db:
+    image: postgres:12-alpine
+    env_file: .env
+    environment:
+      POSTGRES_DB: content
+      POSTGRES_PASSWORD: content
+      POSTGRES_USER: content
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+
+  migrate:
+    build: 
+      context: .
+    env_file: .env
+    environment:
+      ENV: MIGRATE
+      POSTGRES_HOST: db
+      POSTGRES_DB: content
+      POSTGRES_PASSWORD: content
+      POSTGRES_USER: content
+      DEBUGTOOLBAR: 'True'
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    command: "./start_django.sh"
+
+  app:
+    env_file: .env
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_DB: sales_office
+      POSTGRES_PASSWORD: sales_office_password
+      POSTGRES_USER: sales_office_master
+      DEBUGTOOLBAR: 'True'
+    env_file: .env
+    depends_on:
+      - db
+      - migrate
+
+volumes:
+  pgdata:
