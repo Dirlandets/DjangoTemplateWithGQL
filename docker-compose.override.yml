@@ -4,9 +4,9 @@ services:
     image: postgres:12-alpine
     env_file: .env
     environment:
-      POSTGRES_DB: content
-      POSTGRES_PASSWORD: content
-      POSTGRES_USER: content
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
@@ -20,9 +20,9 @@ services:
     environment:
       ENV: MIGRATE
       POSTGRES_HOST: db
-      POSTGRES_DB: content
-      POSTGRES_PASSWORD: content
-      POSTGRES_USER: content
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
       DEBUGTOOLBAR: 'True'
     volumes:
       - .:/app
@@ -34,9 +34,9 @@ services:
     env_file: .env
     environment:
       POSTGRES_HOST: db
-      POSTGRES_DB: sales_office
-      POSTGRES_PASSWORD: sales_office_password
-      POSTGRES_USER: sales_office_master
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
       DEBUGTOOLBAR: 'True'
     env_file: .env
     depends_on:
