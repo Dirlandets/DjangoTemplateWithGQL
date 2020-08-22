@@ -1,7 +1,5 @@
 FROM python:3.8-slim as base
 
-LABEL maintainer="uuuuiiiaaa@yandex.ru"
-
 ARG BUILD_DEPS="build-essential libcairo2-dev libpango1.0-dev libffi-dev git"
 
 ARG DJANGO_ENV
